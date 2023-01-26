@@ -4,7 +4,20 @@ import java.io.ByteArrayOutputStream
 plugins {
     kotlin("jvm") version "1.7.21"
     application
+    id("maven-publish")
 }
+
+publishing{
+    publications{
+        create<MavenPublication>("maven"){
+            groupId="com.code.softech"
+            artifactId="httputils"
+            version="1.0.0"
+            from(components["Java"])
+        }
+    }
+}
+
 
 fun getVersionName(): Any {
     return try {
